@@ -1,0 +1,18 @@
+{% extends 'store/main.html' %}
+
+{% block content %}
+  <div class="login-container">
+    <h2>Login</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}  <!-- This will render form fields like username and password -->
+      <button type="submit">Login</button>
+    </form>
+    
+    {% if form.errors %}
+      <p style="color:red;">Invalid username or password</p>
+    {% endif %}
+    
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>  <!-- Assuming you have a signup page -->
+  </div>
+{% endblock %}
